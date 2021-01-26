@@ -4,3 +4,33 @@ content-view {
   display: block;
   border-left: 1px solid @c-gray;
 }
+
+.content-view__ctrls {
+  .sort-form {
+    display: flex;
+    flex-direction: column;
+    border-bottom: @bottom-border;
+    padding: 5px;
+
+    .search-field {
+      max-width: 150px;
+    }
+  }
+
+  .data-container {
+    display: flex;
+    flex-direction: column;
+    border-bottom: @bottom-border;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .selected {
+    background-color: @c-gray-light;
+  }
+
+  .add-item {
+    padding: 5px;
+  }
+}
+

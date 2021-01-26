@@ -1,1 +1,19 @@
-Sidebar
+<div class="sidebar-view__ctrls">
+  <div class="item-info">
+    <span>Selected: {{model.item.title}}</span>
+    <span>Tags:</span>
+  </div>
+  <div class="tags-container" ng-repeat="tag in model.item.tags">
+    <span>{{tag}}</span>
+    <button
+      type="button"
+      ng-click="removeTag(model.item.id, tag)"
+    >Remove tag
+    </button>
+  </div>
+  <div class="add-tag-container">
+    <span>New tag:</span>
+    <input ng-model="model.newTag" type="text">
+    <button ng-click="addTag(model.item.id, model.newTag)">Add</button>
+  </div>
+</div>

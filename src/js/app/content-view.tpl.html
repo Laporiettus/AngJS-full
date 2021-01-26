@@ -1,2 +1,45 @@
-<some-1></some-1>
-Content
+<summary-view></summary-view>
+<div class="content-view__ctrls">
+  <form class="sort-form">
+    <label>Order:
+      <select
+        name="selectedFilter"
+        ng-model="model.selectedFilter"
+        ng-change="sortByOption()"
+      >
+        <option ng-selected value="byTitle">Title</option>
+        <option value="byDate">Date</option>
+      </select>
+    </label>
+    <label>Only date:
+      <input
+        type="checkbox"
+        ng-model="model.dateOnly"
+        ng-click="enableOnlyDate()"
+      />
+    </label>
+    <label>Search:
+      <input
+        type="text"
+        class="search-field"
+        ng-model="model.searchField"
+        ng-change="filterDataBySearch()"
+      />
+    </label>
+  </form>
+  <div
+    class="data-container"
+    ng-class="{ selected: model.selectedItem === $index }"
+    ng-if="model.filteredArr.length !== 0"
+    ng-repeat="obj in model.filteredArr track by $index"
+    ng-click="sendItemEvent(obj, $index)"
+  >
+    <span>Title: {{ obj.title }}</span>
+    <span>Date: {{ obj.date | date: model.dateTime }} </span>
+  </div>
+  <div class="add-item">
+    <input type="text" ng-model="model.newItemName"/>
+    <button ng-click="addItem()">Add new item</button>
+  </div>
+</div>
+

@@ -1,1 +1,10 @@
-Summary
+<div class="summary-view__ctrls">
+  <span>Summary</span>
+  <span>Last item: {{model.lastItemName}}</span>
+  <span>Unique Tags:</span>
+  <div class="taglist">
+    <span ng-repeat="tag in model.tagList">
+      {{ tag }}
+    </span>
+  </div>
+</div>

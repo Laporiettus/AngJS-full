@@ -7,4 +7,25 @@ sidebar-view {
   width: @sidebar-width + @border-size;
   border-left: @border-size solid @c-gray;
   box-sizing: border-box;
+
+  span {
+    padding: 5px;
+  }
 }
+
+.sidebar-view__ctrls {
+  .item-info {
+    border-bottom: @bottom-border;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tags-container {
+    border-bottom: @bottom-border;
+  }
+
+  .add-tag-container {
+    padding: 5px;
+  }
+}
+
