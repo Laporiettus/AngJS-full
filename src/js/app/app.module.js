@@ -32,7 +32,9 @@ angular.module("app", ["templates"])
     }
 
     const getLastItemName = () => {
-      return storage[storage.length - 1].title
+      const copyStore = [...storage]
+      copyStore.sort((a, b) => a.date > b.date ? 1 : -1)
+      return copyStore[copyStore.length - 1].title
     }
 
     const getUniqueTags = () => {
@@ -91,11 +93,9 @@ angular.module("app", ["templates"])
       $scope.model.dataArr = DataService.getStorage();
       $scope.model.filteredArr = $scope.model.dataArr
 
-
       $scope.sortByOption = () => {
         const filterArr = $scope.model.filteredArr
         const selectedFilter = $scope.model.selectedFilter
-
         if (filterArr.length > 0) {
           if (selectedFilter === 'byTitle') {
             filterArr.sort(
@@ -111,6 +111,7 @@ angular.module("app", ["templates"])
           $scope.model.filteredArr = filterArr
         }
       };
+
       //Поиск по строке Search
       $scope.filterDataBySearch = () => {
         const searchField = $scope.model.searchField
@@ -120,7 +121,6 @@ angular.module("app", ["templates"])
             .includes(searchField.toLowerCase()))
         $scope.model.filteredArr = filterArr
       };
-
       //Переключение отображения только даты/даты и времени
       $scope.enableOnlyDate = () => {
         const dateOnly = $scope.model.dateOnly
@@ -147,12 +147,6 @@ angular.module("app", ["templates"])
           $scope.model.filteredArr = $scope.model.dataArr
         }
       };
-
-      //Вызывает эвент в контроллере Summary
-      $scope.sendArrEvent = (arr) => {
-        $scope.$broadcast('arr-toSummary-event', arr)
-      };
-
       //Выделяет активным предмет, передаёт эмит в контроллер App
       $scope.sendItemEvent = (item, index) => {
         $scope.model.selectedItem = index

@@ -32,12 +32,6 @@ function makeDefaultData() {
       title: "Item 5",
       tags: ["tag 3", "tag 4", "tag 1", "tag 10", "tag 50", "tag tag 22"],
       date: "2020-04-21T09:11:00.000Z",
-    },
-    {
-      id: makeDataId(),
-      title: "Item 6",
-      tags: ["tag 1", "tag 2"],
-      date: "2020-03-02T17:32:00.000Z",
     }
   ];
 }
